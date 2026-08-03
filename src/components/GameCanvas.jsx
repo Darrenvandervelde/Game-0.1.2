@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { PlayerController } from '../systems/PlayerController';
+import { PlayerController } from '../system/PlayerController';
 
 /**
  * GameCanvas
