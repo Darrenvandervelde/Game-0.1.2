@@ -50,8 +50,28 @@ function App() {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <GameCanvas settings={settings} config={gameConfig} />
+
+      {/* Simple controls help overlay */}
+      <div style={{
+        position: 'absolute',
+        bottom: 16,
+        left: 16,
+        background: 'rgba(0,0,0,0.65)',
+        color: '#ccc',
+        padding: '10px 14px',
+        borderRadius: 8,
+        fontSize: 13,
+        lineHeight: 1.5,
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}>
+        <div><strong>Click</strong> the screen to capture mouse</div>
+        <div><strong>WASD</strong> – Move &nbsp;|&nbsp; <strong>Shift</strong> – Sprint</div>
+        <div><strong>Mouse</strong> – Look around</div>
+        <div style={{ marginTop: 4, opacity: 0.7 }}>Esc to release mouse</div>
+      </div>
     </div>
   );
 }
