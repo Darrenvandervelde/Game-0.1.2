@@ -1,0 +1,22 @@
+{
+  "title": "My Three.js Game",
+  "version": "0.1.0",
+  "defaultScene": "MainScene",
+  "player": {
+    "moveSpeed": 5,
+    "jumpForce": 8,
+    "health": 100
+  },
+  "world": {
+    "gravity": -9.81,
+    "fogColor": "#0a0a0a",
+    "fogNear": 10,
+    "fogFar": 100
+  },
+  "camera": {
+    "fov": 75,
+    "near": 0.1,
+    "far": 1000,
+    "position": [0, 5, 10]
+  }
+}
