@@ -4,19 +4,25 @@
   "defaultScene": "MainScene",
   "player": {
     "moveSpeed": 5,
+    "sprintMultiplier": 1.6,
     "jumpForce": 8,
-    "health": 100
+    "health": 100, 
+    "height": 1.8,
+    "raduis": 0.4
+  },
+  "camera": {
+    "fov": 75,
+    "near": 0.1,
+    "far": 1000,
+    "followDistance": 6,
+    "followHeight": 2.5,
+    "lookAtHeight": 1.4, 
+    "mouseSensitivity": 0.002
   },
   "world": {
     "gravity": -9.81,
     "fogColor": "#0a0a0a",
     "fogNear": 10,
     "fogFar": 100
-  },
-  "camera": {
-    "fov": 75,
-    "near": 0.1,
-    "far": 1000,
-    "position": [0, 5, 10]
   }
 }
