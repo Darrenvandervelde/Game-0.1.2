@@ -30,7 +30,7 @@
     "wait-on": "^8.0.1"
   },
   "engines": {
-    "node": ">=18 <21"
+    "node": ">=18 <25"
   },
   "packageManager": "npm@9",
   "build": {

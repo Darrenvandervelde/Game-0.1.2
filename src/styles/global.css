@@ -1,0 +1,18 @@
+/* Global styles for the app */
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #f5f5f5;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
