@@ -10,11 +10,11 @@ import gameConfig from './data/gameConfig.json';
 
 /*
   Implementing useStates to store configuration data for the settings 
-  and the loading function as well. 
+  and the loading function as well.
 */
 
 function App() {
-  const [settings, setSettings] = useState(null);
+  const [settings, setSettings] = useState(null); // Initialize settings state as null until data loads /* NO DATA YET INSIDE */
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,9 +40,9 @@ function App() {
           */
           setSettings({
             window: { 
-              width: 1280, 
-              height: 720, 
-              fullscreen: false 
+              width: 1280, // Screen Width
+              height: 720, // Screen Height
+              fullscreen: false // FullScreen Turned Off
             },
             graphics: { 
               antialias: true, 
@@ -58,7 +58,7 @@ function App() {
             gameplay: { 
               difficulty: 'normal', 
               showFPS: true, 
-              language: 'en' 
+              language: 'en' // language of the game.
             },
           });
         }
