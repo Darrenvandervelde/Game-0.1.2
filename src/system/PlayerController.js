@@ -1,16 +1,14 @@
 import * as THREE from 'three';
 
-/**
- * PlayerController
- * ----------------
- * Handles:
- *  - Player mesh creation
- *  - WASD movement (camera-relative)
- *  - Sprint (Shift)
- *  - Third-person camera follow + mouse look
- *
- * This is a plain class (not React) so it can be used inside the
- * Three.js animation loop without React re-render issues.
+/*
+PlayerController
+ Handles:
+ - Player mesh creation
+ - WASD movement (camera-relative)
+ - Sprint (Shift)
+ - Third-person camera follow + mouse look
+ This is a plain class (not React) so it can be used inside the
+ Three.js animation loop without React re-render issues.
  */
 export class PlayerController {
   constructor(scene, camera, config) {
@@ -18,21 +16,27 @@ export class PlayerController {
     this.camera = camera;
     this.config = config;
 
-    // ---- Player config from JSON ----
+    /*
+      Player config from JSON 
+    */
     const p = config.player || {};
     this.moveSpeed = p.moveSpeed ?? 8;
     this.sprintMultiplier = p.sprintMultiplier ?? 1.6;
     this.playerHeight = p.height ?? 1.8;
     this.playerRadius = p.radius ?? 0.4;
 
-    // ---- Camera config from JSON ----
+    /* 
+      Camera config from JSON
+    */
     const c = config.camera || {};
     this.followDistance = c.followDistance ?? 6;
     this.followHeight = c.followHeight ?? 2.5;
     this.lookAtHeight = c.lookAtHeight ?? 1.4;
     this.mouseSensitivity = c.mouseSensitivity ?? 0.002;
 
-    // ---- Internal state ----
+    /* 
+      Internal state
+    */
     this.velocity = new THREE.Vector3();
     this.direction = new THREE.Vector3();
     this.spherical = new THREE.Spherical(); // for mouse orbit
@@ -50,33 +54,40 @@ export class PlayerController {
 
     this.isPointerLocked = false;
 
-    // Create the visual player
+    /*
+      Create the visual player
+    */
     this.mesh = this._createPlayerMesh();
     this.scene.add(this.mesh);
 
-    // Bind methods so they keep correct `this` when used as event listeners
+    /* 
+      Bind methods so they keep correct `this` when used as event listeners
+    */    
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
     this._onMouseMove = this._onMouseMove.bind(this);
     this._onPointerLockChange = this._onPointerLockChange.bind(this);
   }
 
-  // --------------------------------------------------
-  // Public API
-  // --------------------------------------------------
-
-  /** Call once after creating the controller to enable input */
+  /*
+    Public API
+    Call once after creating the controller to enable input 
+  */
   enable() {
     document.addEventListener('keydown', this._onKeyDown);
     document.addEventListener('keyup', this._onKeyUp);
     document.addEventListener('mousemove', this._onMouseMove);
     document.addEventListener('pointerlockchange', this._onPointerLockChange);
 
-    // Click the canvas to lock the mouse (standard FPS/TPS behaviour)
-    // We attach this on the renderer.domElement later from GameCanvas
+    /*
+      Click the canvas to lock the mouse (standard FPS/TPS behaviour)
+      We attach this on the renderer.domElement later from GameCanvas
+    */
   }
 
-  /** Call on cleanup */
+  /*
+    Call on cleanup
+  */
   disable() {
     document.removeEventListener('keydown', this._onKeyDown);
     document.removeEventListener('keyup', this._onKeyUp);
@@ -88,29 +99,33 @@ export class PlayerController {
     }
   }
 
-  /** Request pointer lock (call this from a click handler) */
+  /* 
+    Request pointer lock (call this from a click handler) 
+  */
   requestPointerLock(domElement) {
     if (domElement && !this.isPointerLocked) {
       domElement.requestPointerLock();
     }
   }
 
-  /**
-   * Main update – call every frame
-   * @param {number} delta  seconds since last frame
-   */
+  /*
+   Main update – call every frame
+   @param {number} delta  seconds since last frame
+  */
   update(delta) {
     this._updateMovement(delta);
     this._updateCamera();
   }
 
-  // --------------------------------------------------
-  // Private helpers
-  // --------------------------------------------------
+   /*
+     Private helpers
+   */
 
   _createPlayerMesh() {
-    // Simple capsule-like shape using a cylinder + two spheres
-    // (Three.js r152+ has CapsuleGeometry, but we stay compatible)
+    /*
+    Simple capsule-like shape using a cylinder + two spheres
+    (Three.js r152+ has CapsuleGeometry, but we stay compatible)
+    */
     const group = new THREE.Group();
 
     const bodyGeo = new THREE.CylinderGeometry(
