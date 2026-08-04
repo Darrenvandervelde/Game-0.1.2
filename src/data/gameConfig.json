@@ -1,46 +1,28 @@
 {
-  /*
-    Basic project info
-  */
   "title": "My Three.js Game",
   "version": "0.1.0",
   "defaultScene": "MainScene",
-
-  /*
-    Player settings
-    Controls movement speed, jump, health and collision size
-  */
   "player": {
-    "moveSpeed": 5,              /* units per second while walking */
-    "sprintMultiplier": 1.6,     /* multiplies moveSpeed when sprinting */
-    "jumpForce": 8,              /* upward velocity applied on jump */
-    "health": 100,               /* starting health points */
-    "height": 1.8,               /* player capsule height (eye level ≈ this) */
-    "raduis": 0.4                /* player capsule radius (typo: should be "radius") */
+    "moveSpeed": 5,
+    "sprintMultiplier": 1.6,
+    "jumpForce": 8,
+    "health": 100,
+    "height": 1.8,
+    "radius": 0.4
   },
-
-  /*
-    Camera settings
-    Third-person follow camera with mouse look
-  */
   "camera": {
-    "fov": 75,                   /* field of view in degrees */
-    "near": 0.1,                 /* near clipping plane */
-    "far": 1000,                 /* far clipping plane */
-    "followDistance": 6,         /* how far behind the player the camera stays */
-    "followHeight": 2.5,         /* height offset of the camera above the player */
-    "lookAtHeight": 1.4,         /* height on the player that the camera looks at */
-    "mouseSensitivity": 0.002    /* mouse look sensitivity */
+    "fov": 75,
+    "near": 0.1,
+    "far": 1000,
+    "followDistance": 6,
+    "followHeight": 2.5,
+    "lookAtHeight": 1.4,
+    "mouseSensitivity": 0.002
   },
-
-  /*
-    World settings
-    Gravity and atmospheric fog
-  */
   "world": {
-    "gravity": -9.81,            /* downward acceleration (m/s²) */
-    "fogColor": "#0a0a0a",       /* color of the distance fog */
-    "fogNear": 10,               /* distance where fog starts */
-    "fogFar": 100                /* distance where fog becomes fully opaque */
+    "gravity": -9.81,
+    "fogColor": "#0a0a0a",
+    "fogNear": 10,
+    "fogFar": 100
   }
 }
